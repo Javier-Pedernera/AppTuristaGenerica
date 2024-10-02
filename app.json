@@ -1,0 +1,81 @@
+{
+  "expo": {
+    "name": "TouristAppFlex",
+    "slug": "TouristAppFlex",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "myapp",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/images/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "permissions": [
+        "android.permission.CAMERA"
+      ],
+      "package": "com.tourist.appFlex",
+      "versionCode": 8,
+     "intentFilters": [
+    {
+      "action": "VIEW",
+      "autoVerify": true,
+      "data": {
+        "scheme": "https",
+        "host": "tourist-app-flex.vercel.app",
+        "pathPrefix": "/PromotionDetail/"
+      },
+      "category": ["BROWSABLE", "DEFAULT"]
+    },
+    {
+      "action": "VIEW",
+      "autoVerify": true,
+      "data": {
+        "scheme": "cobquecurapp",
+        "host": "PromotionDetail",
+        "pathPrefix": "/"
+      },
+      "category": ["BROWSABLE", "DEFAULT"]
+    }
+  ],
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyCT_n-0KfURHxeSE04sZlmAdWeUwaGQ1Ek"
+        }
+      }
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static",
+      "favicon": "./assets/images/favicon.png"
+    },
+    "plugins": [
+      [
+        "expo-barcode-scanner",
+        {
+          "cameraPermission": "Allow $(PRODUCT_NAME) to access camera."
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location."
+        }
+      ],
+      "expo-router",
+      "expo-font"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
