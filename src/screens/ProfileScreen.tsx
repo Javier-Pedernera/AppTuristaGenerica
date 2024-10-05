@@ -19,11 +19,13 @@ import { formatDateToDDMMYYYY } from '../utils/formatDate';
 import CountryPicker from '../components/CountrySelect';
 import ImageCompressor from '../components/ImageCompressor';
 import SemicirclesOverlay from '../components/SemicirclesOverlay';
+import { useTranslation } from 'react-i18next';
 
 const { width: screenWidth } = Dimensions.get('window');
 // const screenHeight = Dimensions.get('window').height;
 
 const ProfileScreen: React.FC = () => {
+  const { t } = useTranslation();
   const user = useSelector(getMemoizedUserData) as UserData;
   const categories = useSelector(getMemoizedUserCategories);
   const allCategories = useSelector(getMemoizedAllCategories);
@@ -116,18 +118,6 @@ const ProfileScreen: React.FC = () => {
     setShowDatePicker(false);
   };
 
-  // const handleImagePick = async () => {
-  //   const result = await ImagePicker.launchImageLibraryAsync({
-  //     mediaTypes: ImagePicker.MediaTypeOptions.Images,
-  //     allowsEditing: true,
-  //     aspect: [1, 1],
-  //     quality: 1,
-  //   });
-
-  //   if (!result.canceled) {
-  //     handleInputChange('image_url', result.assets[0].uri);
-  //   }
-  // };
   const handleImageCompressed = (uri: string) => {
     // console.log("imagencomprimida");
 
@@ -204,19 +194,19 @@ const ProfileScreen: React.FC = () => {
         <ImageCompressor onImageCompressed={handleImageCompressed} initialImageUri={formData.image_data || undefined} />
         <TextInput
           style={styles.input}
-          placeholder="Nombre"
+          placeholder={t('formComponent.namePlaceholder')}
           value={formData.first_name}
           onChangeText={(value) => handleInputChange('first_name', value)}
         />
         <TextInput
           style={styles.input}
-          placeholder="Apellido"
+          placeholder={t('formComponent.surnamePlaceholder')}
           value={formData.last_name}
           onChangeText={(value) => handleInputChange('last_name', value)}
         />
         <TextInput
           style={styles.input}
-          placeholder="Correo Electrónico"
+          placeholder={t('formComponent.emailPlaceholder')}
           value={formData.email}
           onChangeText={(value) => handleInputChange('email', value)}
           keyboardType="email-address"
@@ -238,20 +228,20 @@ const ProfileScreen: React.FC = () => {
       /> */}
         <TextInput
           style={styles.input}
-          placeholder="Ciudad"
+          placeholder={t('formComponent.cityPlaceholder')}
           value={formData.city}
           onChangeText={(value) => handleInputChange('city', value)}
         />
         <TextInput
           style={styles.input}
-          placeholder="Número de Teléfono"
+          placeholder={t('formComponent.phonePlaceholder')}
           value={formData.phone_number}
           onChangeText={(value) => handleInputChange('phone_number', value)}
         />
         <View style={styles.datePickerContainer}>
           {!showDatePicker && (<TouchableOpacity onPress={() => setShowDatePicker(true)} style={styles.inputdate}>
             <Text style={styles.textDate}>
-              {formData.birth_date ? formatDateToDDMMYYYY(formData.birth_date) : 'Fecha de Nacimiento (DD-MM-YYYY)'}
+              {formData.birth_date ? formatDateToDDMMYYYY(formData.birth_date) : `${t('formComponent.birthDate')}` }
             </Text>
           </TouchableOpacity>)}
           {showDatePicker && (
@@ -277,10 +267,10 @@ const ProfileScreen: React.FC = () => {
               value={formData.gender}
               onChange={(e) => handleInputChange('gender', e.target.value)}
             >
-              <option value="" disabled>Seleccione Género</option>
-              <option value="male">Masculino</option>
-              <option value="female">Femenino</option>
-              <option value="Otro">Otro</option>
+              <option value="" disabled>{t('formComponent.genderSelect')}</option>
+              <option value="male">{t('formComponent.male')}</option>
+              <option value="female">{t('formComponent.female')}</option>
+              <option value="Otro">{t('formComponent.other')}</option>
             </select>
           </View>
         ) : (
@@ -289,11 +279,11 @@ const ProfileScreen: React.FC = () => {
               onValueChange={(value: any) => handleInputChange('gender', value)}
               value={formData.gender}
               items={[
-                { label: 'Masculino', value: 'male' },
-                { label: 'Femenino', value: 'female' },
-                { label: 'Otro', value: 'Otro' },
+                { label: t('formComponent.male'), value: 'male' },
+                { label: t('formComponent.female'), value: 'female' },
+                { label: t('formComponent.other'), value: 'other' },
               ]}
-              placeholder={{ label: 'Seleccione Género', value: '' }}
+              placeholder={{ label: t('formComponent.genderSelect'), value: '' }}
               style={pickerSelectStyles}
               useNativeAndroidPickerStyle={false}
             />
@@ -304,10 +294,10 @@ const ProfileScreen: React.FC = () => {
           style={styles.button}
           onPress={() => setCategoriesModalVisible(true)}
         ><MaterialIcons name="category" size={24} color="white" />
-          <Text style={styles.buttonText}>Ver Categorías</Text>
+          <Text style={styles.buttonText}>{t('formComponent.viewCategories')}</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={handleUpdate}>
-          <Text style={styles.buttonText}>Actualizar datos</Text>
+          <Text style={styles.buttonText}>{t('formComponent.updateData')}</Text>
         </TouchableOpacity>
         <Modal
           visible={modalVisible}
@@ -324,7 +314,7 @@ const ProfileScreen: React.FC = () => {
               )}
               <Text style={styles.modalText}>{modalMessage}</Text>
               <TouchableOpacity style={styles.modalButton} onPress={() => setModalVisible(false)}>
-                <Text style={styles.modalButtonText}>Cerrar</Text>
+                <Text style={styles.modalButtonText}>{t('formComponent.close')}</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -332,7 +322,7 @@ const ProfileScreen: React.FC = () => {
         <Modal visible={isCategoriesModalVisible} animationType="slide" transparent>
           <View style={styles.modalContainer}>
             <View style={styles.modalContent}>
-              <Text style={styles.modalTitle}>Editar Categorías</Text>
+              <Text style={styles.modalTitle}>{t('formComponent.editCategories')}</Text>
               <ScrollView>
                 {allCategories.map((category) => (
                   <View key={category.category_id} style={styles.checkboxContainer}>
@@ -345,10 +335,10 @@ const ProfileScreen: React.FC = () => {
                 ))}
               </ScrollView>
               <TouchableOpacity onPress={handleSaveCategories} style={styles.modalButton}>
-                <Text style={styles.modalButtonText}>Guardar Categorías</Text>
+                <Text style={styles.modalButtonText}>{t('formComponent.saveCategories')}</Text>
               </TouchableOpacity>
               <TouchableOpacity onPress={() => setCategoriesModalVisible(false)} style={styles.modalButtonCancel}>
-                <Text style={styles.modalButtonText}>Cancelar</Text>
+                <Text style={styles.modalButtonText}>{t('formComponent.cancel')}</Text>
               </TouchableOpacity>
             </View>
           </View>

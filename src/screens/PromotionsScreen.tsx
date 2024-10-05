@@ -20,9 +20,11 @@ import PromotionCard from '../components/PromotionCard';
 import Loader from '../components/Loader';
 import SemicirclesOverlay from '../components/SemicirclesOverlay';
 import PromotionCardVertical from '../components/PromotionCardVertical';
+import { useTranslation } from 'react-i18next';
 const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
 
 const PromotionsScreen: React.FC = () => {
+  const { t, i18n } = useTranslation();
   const dispatch: AppDispatch = useDispatch();
   const promotions = useSelector(getMemoizedPromotions);
   const categories = useSelector(getMemoizedAllCategories);
@@ -255,7 +257,7 @@ const keyExtractorForDisplayedPromotions = (item: Promotion, index: number) => `
       <SemicirclesOverlay />
       <TextInput
         style={styles.inputLarge}
-        placeholder="Buscar promociones"
+        placeholder={t('promotions.searchPromotions')}
         value={keyword}
         onChangeText={setKeyword}
         placeholderTextColor="#888"
@@ -267,25 +269,25 @@ const keyExtractorForDisplayedPromotions = (item: Promotion, index: number) => `
           <View style={styles.textFilterCont}>
             <Text style={styles.textFilter}>
               <Text style={styles.textFilterName}>
-                <MaterialCommunityIcons name="form-textbox-password" size={12} color="#acd0d5" /> Palabra clave:
+                <MaterialCommunityIcons name="form-textbox-password" size={12} color="#acd0d5" /> {t('promotions.keyword')}:
               </Text>   
               {keyword ? keyword : ' -'}
             </Text>
             <Text style={styles.textFilter}>
               <Text style={styles.textFilterName}>
-                <MaterialCommunityIcons name="calendar-arrow-right" size={12} color="#acd0d5"  /> Inicio:
+                <MaterialCommunityIcons name="calendar-arrow-right" size={12} color="#acd0d5"  /> {t('promotions.start')}:
               </Text>   
               {startDate ? formatDateString(startDate) : ' -'}
             </Text>
             <Text style={styles.textFilter}>
               <Text style={styles.textFilterName}>
-                <MaterialCommunityIcons name="calendar-arrow-left" size={12} color="#acd0d5" /> Fin:
+                <MaterialCommunityIcons name="calendar-arrow-left" size={12} color="#acd0d5" /> {t('promotions.end')}:
               </Text>   
               {endDate ? formatDateString(endDate) : ' -'}
             </Text>
             <Text style={styles.textFilter}>
               <Text style={styles.textFilterName}>
-                <MaterialCommunityIcons name="playlist-check" size={12} color="#acd0d5" /> Categorías:
+                <MaterialCommunityIcons name="playlist-check" size={12} color="#acd0d5" /> {t('promotions.categories')}:
               </Text>   
               {selectedCategoriesName.length > 0 
                 ? (
@@ -299,7 +301,7 @@ const keyExtractorForDisplayedPromotions = (item: Promotion, index: number) => `
                 : <Text> -</Text>
               }
             </Text>
-            <Text style={styles.textFilterMainTitle}>Filtros de cupones</Text>
+            <Text style={styles.textFilterMainTitle}>{t('promotions.filters')}</Text>
           </View>
           <MaterialCommunityIcons style={styles.couponImage} name="ticket-percent-outline" size={20} color="rgba(0, 122, 140,0.8)" />
         </View>
@@ -309,7 +311,7 @@ const keyExtractorForDisplayedPromotions = (item: Promotion, index: number) => `
       <View style={styles.filterIconsContainer}>
         <TouchableOpacity onPress={() => setShowStartDatePicker(true)} style={styles.iconTextFilter}>
           <MaterialCommunityIcons name="calendar-start" size={20} color="#336749" style={styles.filterIcon} />
-          <Text style={styles.filterIconText}>Inicio</Text>
+          <Text style={styles.filterIconText}> {t('promotions.start')}</Text>
         </TouchableOpacity>
         {showStartDatePicker && (
           <View>
@@ -321,14 +323,14 @@ const keyExtractorForDisplayedPromotions = (item: Promotion, index: number) => `
             />
             {Platform.OS === 'ios' && (
               <TouchableOpacity onPress={confirmStartDate} style={styles.confirmButton}>
-                <Text style={styles.confirmButtonText}>Confirmar fecha de inicio</Text>
+                <Text style={styles.confirmButtonText}> {t('promotions.confirmStartDate')}</Text>
               </TouchableOpacity>
             )}
           </View>
         )}
         <TouchableOpacity onPress={() => setShowEndDatePicker(true)} style={styles.iconTextFilter}>
           <MaterialCommunityIcons name="calendar-end" size={20} color="#336749" style={styles.filterIcon}/>
-          <Text style={styles.filterIconText}>Fin</Text>
+          <Text style={styles.filterIconText}> {t('promotions.end')}</Text>
         </TouchableOpacity>
         {showEndDatePicker && (
           <View>
@@ -340,18 +342,18 @@ const keyExtractorForDisplayedPromotions = (item: Promotion, index: number) => `
             />
             {Platform.OS === 'ios' && (
               <TouchableOpacity onPress={confirmEndDate} style={styles.confirmButton}>
-                <Text style={styles.confirmButtonText}>Confirmar fecha de fin</Text>
+                <Text style={styles.confirmButtonText}> {t('promotions.confirmEndDate')}</Text>
               </TouchableOpacity>
             )}
           </View>
         )}
         <TouchableOpacity onPress={() => setIsModalVisible(true)} style={styles.iconTextFilter}>
           <MaterialCommunityIcons name="format-list-checks" size={20} color="#336749" style={styles.filterIcon}/>
-          <Text style={styles.filterIconText}>Categorías</Text>
+          <Text style={styles.filterIconText}>{t('promotions.categories')}</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.iconTextFilter} onPress={clearFilters}>
           <MaterialCommunityIcons name="filter-remove-outline" size={20} color="#336749" style={styles.filterIcon} />
-          <Text style={styles.filterIconText}>Limpiar</Text>
+          <Text style={styles.filterIconText}>{t('promotions.clear')}</Text>
         </TouchableOpacity>
       </View>
   
@@ -361,7 +363,7 @@ const keyExtractorForDisplayedPromotions = (item: Promotion, index: number) => `
           <>
             {!isPreferencesHide && (
               <View style={styles.misPrefe}>
-                <Text style={styles.titlepreferne}>Promociones según tus preferencias</Text>
+                <Text style={styles.titlepreferne}>{t('promotions.noPreferencesFound')}</Text>
                 <FlatList
                   horizontal
                   data={filterByPreferences}
@@ -386,12 +388,12 @@ const keyExtractorForDisplayedPromotions = (item: Promotion, index: number) => `
             <View style={styles.otrasPromos}>
               {isPreferencesHide ? (
                 <TouchableOpacity>
-                  <Text style={styles.vermaspref} onPress={handlePressMore}>Mostrar según mis preferencias...</Text>
+                  <Text style={styles.vermaspref} onPress={handlePressMore}>{t('promotions.morePreferences')}</Text>
                 </TouchableOpacity>
               ) : (
                 <TouchableOpacity style={styles.otherPromotionsbtn}>
-                  <Text style={styles.otherPromotionsTitle}>Otras Promociones</Text>
-                  <Text style={styles.vermas} onPress={handlePressMore}>ver todas...</Text>
+                  <Text style={styles.otherPromotionsTitle}>{t('promotions.otherPromotions')}</Text>
+                  <Text style={styles.vermas} onPress={handlePressMore}>{t('promotions.viewAll')}</Text>
                 </TouchableOpacity>
               )}
             </View>
@@ -426,10 +428,10 @@ const keyExtractorForDisplayedPromotions = (item: Promotion, index: number) => `
             )}
           />
           <TouchableOpacity style={styles.filteraplyButton} onPress={applyFilters}>
-            <Text style={styles.filterButtonText}>Aplicar categorías</Text>
+            <Text style={styles.filterButtonText}>{t('promotions.applyCategories')}</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.closeButton} onPress={() => setIsModalVisible(false)}>
-            <Text style={styles.filterButtonText}>Cerrar</Text>
+            <Text style={styles.filterButtonText}>{t('promotions.close')}</Text>
           </TouchableOpacity>
         </View>
       </Modal>

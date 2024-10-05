@@ -1,0 +1,126 @@
+{
+  "navBar": {
+    "greeting": "Hello,"
+  },
+  "languageSelector": {
+    "chooseLanguage": "Choose a language"
+  },
+  "landing": {
+    "readyToEnjoy": "Ready to enjoy",
+    "cobquecura": "Cobquecura",
+    "andTheBest": "and the best",
+    "promotions": "promotions?",
+    "enjoyDiscountsHere": "Enjoy discounts here"
+  },
+  "login": {
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "Password",
+    "forgotPassword": "Forgot your password?",
+    "login": "Login",
+    "noAccount": "Don't have an account?",
+    "register": "Register",
+    "close": "Close" 
+  },
+  "register": {
+    "firstNamePlaceholder": "* First Name",
+    "lastNamePlaceholder": "* Last Name",
+    "emailPlaceholder": "* Email",
+    "cityPlaceholder": "City",
+    "phonePlaceholder": "Phone Number",
+    "birthDate": "Birth Date",
+    "genderPlaceholder": "Select Gender",
+    "specifyGenderPlaceholder": "Specify Gender",
+    "preferences": "Preferences",
+    "selectPreferences": "Select your preferences",
+    "close": "Close",
+    "passwordPlaceholder": "* Password",
+    "confirmPasswordPlaceholder": "* Confirm Password",
+    "acceptTerms": "Accept terms and conditions",
+    "register": "Register",
+    "back": "Back",
+    "termsAndConditions": "Terms and Conditions",
+    "male": "Male",
+    "female": "Female",
+    "other": "Other"
+  },
+  "branches": {
+    "searchByName": "Search by name",
+    "searchByAddress": "Search by address",
+    "noBranchesFound": "No branches found."
+  },
+  "promotions": {
+    "searchPromotions": "Search promotions",
+    "keyword": "Keyword",
+    "start": "Start",
+    "end": "End",
+    "categories": "Categories",
+    "filters": "Coupon filters",
+    "noPreferencesFound": "Promotions according to your preferences",
+    "morePreferences": "Show according to my preferences...",
+    "otherPromotions": "Other Promotions",
+    "viewAll": "view all...",
+    "applyCategories": "Apply categories",
+    "close": "Close",
+    "clear": "Clear",
+    "startDate": "Start",
+    "endDate": "End",
+    "categoriesModal": "Categories",
+    "confirmStartDate": "Confirm start date",
+    "confirmEndDate": "Confirm end date"
+  },
+  "sidebar": {
+    "profile": "Profile",
+    "favorites": "Favorites",
+    "contact": "Contact",
+    "touristPoints": "Tourist Points",
+    "map": "Map",
+    "legal": "Legal",
+    "logout": "Log out",
+    "version": "Beta Version",
+    "settings": "Settings"
+  },
+  "favoritesScreen": {
+    "showOnlyAvailable": "Show only available",
+    "deleteFavorite": "Remove favorite",
+    "deleteConfirmation": "Are you sure you want to remove this promotion from your favorites?",
+    "cancel": "Cancel",
+    "delete": "Remove",
+    "addYourFavorites": "Add your favorite promotions.",
+    "from": "From",
+    "to": "To"
+  },
+  "contactComponent": {
+    "description": "We are the Chamber of Commerce, Tourism, and Development of Cobquecura, dedicated to promoting and fostering family-friendly, safe, sustainable, and responsible tourism in our beautiful commune. Our mission is to preserve and enhance the natural and cultural landscape of the region, promoting environmental conservation and respecting local traditions, without disturbing the rural lifestyle that characterizes Cobquecura.",
+    "boardTitle": "OUR BOARD OF DIRECTORS",
+    "president": "President: Francisco Maldonado Gaete",
+    "vicePresident": "Vice President: Cristobal Bustos Torres",
+    "treasurer": "Treasurer: Julia Fernandez",
+    "secretary": "Secretary: Melina Polo",
+    "director": "Director: Leonardo Blait",
+    "counselorDirector": "Director Counselor: Oscar Solar Arriagada",
+    "contactMethods": "CONTACT METHODS",
+    "cesfam": "Cesfam: (+56 42) 2585412",
+    "emergency": "Emergencies: (+569) 447-7199, (+56 42) 234-7609",
+    "recycling": "Recycling: (+569) 737-85708",
+    "website": "Visit us on our website",
+    "footer": "2024 - All rights reserved"
+  },
+  "formComponent": {
+    "namePlaceholder": "First Name",
+    "surnamePlaceholder": "Last Name",
+    "emailPlaceholder": "Email",
+    "cityPlaceholder": "City",
+    "phonePlaceholder": "Phone Number",
+    "birthDate": "Birth Date (DD-MM-YYYY)",
+    "genderSelect": "Select Gender",
+    "male": "Male",
+    "female": "Female",
+    "other": "Other",
+    "viewCategories": "View Categories",
+    "updateData": "Update Data",
+    "close": "Close",
+    "editCategories": "Edit Categories",
+    "saveCategories": "Save Categories",
+    "cancel": "Cancel"
+  }
+}

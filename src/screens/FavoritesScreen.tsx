@@ -11,11 +11,14 @@ import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { getMemoizedFavorites } from '../redux/selectors/userSelectors';
 import { fetchUserFavorites, removeFavoriteAction } from '../redux/actions/userActions';
 import Checkbox from 'expo-checkbox';
+import { useTranslation } from 'react-i18next';
+import { formatDateToDDMMYYYY } from '../utils/formatDate';
 
 const { width: screenWidth } = Dimensions.get('window');
 const screenHeight = Dimensions.get('window').height;
 
 const FavoritesScreen: React.FC = () => {
+  const { t } = useTranslation();
   const dispatch: AppDispatch = useDispatch();
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   const promotions = useSelector(getMemoizedPromotions);
@@ -42,21 +45,21 @@ const FavoritesScreen: React.FC = () => {
     setLoading(false);
   }, [promotions, userFavorites]);
 
-  const handlePress = (promotion: Promotion) => {
-    navigation.navigate('PromotionDetail', { promotion });
+  const handlePress = (promotionId: any) => {
+    navigation.navigate('PromotionDetail', { promotionId });
   };
 
   const handleRemoveFavorite = (promotionId: number) => {
     Alert.alert(
-      "Eliminar favorito",
-      "¿Estás seguro de que deseas eliminar esta promoción de tus favoritos?",
+      t('favoritesScreen.deleteFavorite'),
+      t('favoritesScreen.deleteConfirmation'),
       [
         {
-          text: "Cancelar",
+          text: t('favoritesScreen.cancel'),
           style: "cancel"
         },
         {
-          text: "Eliminar",
+          text: t('favoritesScreen.delete'),
           onPress: () => {
             dispatch(removeFavoriteAction(promotionId));
             setFilteredFavorites(prevFavorites => prevFavorites.filter(promo => promo.promotion_id !== promotionId));
@@ -85,7 +88,7 @@ const FavoritesScreen: React.FC = () => {
           onValueChange={setShowOnlyAvailable}
           style={styles.checkbox}
         />
-        <Text style={styles.checkboxLabel}>Mostrar solo disponibles</Text>
+        <Text style={styles.checkboxLabel}>{t('favoritesScreen.showOnlyAvailable')}</Text>
       </View>
       <View style={styles.divider1} />
       {loading ? (
@@ -96,7 +99,7 @@ const FavoritesScreen: React.FC = () => {
             <TouchableOpacity
               key={promotion.promotion_id}
               style={styles.promotionCard}
-              onPress={() => handlePress(promotion)}
+              onPress={() => handlePress(promotion.promotion_id)}
             >
               <View style={styles.promotionContent}>
                 <Image
@@ -105,8 +108,8 @@ const FavoritesScreen: React.FC = () => {
                 />
                 <View style={styles.promotionContentText}>
                   <Text style={styles.promotionTitle}>{promotion.title}</Text>
-                  <Text style={styles.promotionDates}>Desde: {promotion.start_date}</Text>
-                  <Text style={styles.promotionDates}>Hasta: {promotion.expiration_date}</Text>
+                  <Text style={styles.promotionDates}>{t('favoritesScreen.from')}: {formatDateToDDMMYYYY(promotion.start_date) }</Text>
+                  <Text style={styles.promotionDates}>{t('favoritesScreen.to')}: {formatDateToDDMMYYYY(promotion.expiration_date) }</Text>
                   <Text style={styles.discountText}>{promotion.discount_percentage}%</Text>
                 </View>
                 <TouchableOpacity style={styles.deleteBtn} onPress={() => handleRemoveFavorite(promotion.promotion_id)}>
@@ -118,7 +121,7 @@ const FavoritesScreen: React.FC = () => {
           ))
         ) : (
           <View style={styles.favtextcont}>
-            <Text style={styles.favtext}>Agrega tus promociones favoritas.</Text>
+            <Text style={styles.favtext}>{t('favoritesScreen.addYourFavorites')}</Text>
           </View>
         )
       )}
@@ -201,7 +204,7 @@ const styles = StyleSheet.create({
   },
   deleteBtn: {
     position: 'absolute',
-    bottom: 5,
+    bottom: 0,
     right: 15,
   },
   divider1: {

@@ -19,6 +19,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import BranchesScreen from './BranchesScreen';
 import BranchDetails from './BranchDetails ';
 import TermsAndConditionsScreen from './TermsAndConditionsScreen';
+import SettingsScreen from './SettingsScreen';
 
 const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
@@ -166,6 +167,16 @@ const MainTabs = () => {
       <Tab.Screen
         name="PuntosTuristicos"
         component={TouristListScreen}
+        options={{ tabBarButton: () => null, headerShown: false }}
+      />
+      <Tab.Screen
+        name="Mapa"
+        component={MapScreen}
+        options={{ tabBarButton: () => null, headerShown: false }}
+      />
+      <Tab.Screen
+        name="Configuracion"
+        component={SettingsScreen}
         options={{ tabBarButton: () => null, headerShown: false }}
       />
       <Tab.Screen

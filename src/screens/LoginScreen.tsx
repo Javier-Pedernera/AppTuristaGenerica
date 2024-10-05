@@ -12,6 +12,7 @@ import { RootStackParamList } from '../navigation/AppNavigator';
 import { fetchAllCategories } from '../redux/actions/categoryActions';
 import { AppDispatch } from '../redux/store/store';
 import { Dimensions } from 'react-native';
+import { useTranslation } from 'react-i18next';
 
 // const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
 type LoginScreenProp = StackNavigationProp<RootStackParamList, 'Login'>;
@@ -19,6 +20,7 @@ type LoginScreenProp = StackNavigationProp<RootStackParamList, 'Login'>;
 
 const LoginScreen: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
+  const { t } = useTranslation();
   const navigation = useNavigation<LoginScreenProp>();
   const route = useRoute<any>();
 
@@ -53,7 +55,7 @@ const LoginScreen: React.FC = () => {
   const handleLogin = async () => {
     const lowerCaseEmail = email.trim().toLowerCase();
     if (lowerCaseEmail === '' || password === '') {
-      Alert.alert('Error', 'Por favor ingresa tu correo electrónico y contraseña.');
+      Alert.alert('Error', t('errorEmptyFields'));
       return;
     }
     try {
@@ -80,15 +82,12 @@ const LoginScreen: React.FC = () => {
 
 
   return (
-    <LinearGradient
-      colors={['#007a8c', '#f6f6f6']}
-      style={styles.container}
-    >
+    <LinearGradient colors={['#007a8c', '#f6f6f6']} style={styles.container}>
       <View style={styles.card}>
         <Image source={require('../../assets/logo.png')} style={styles.logoLog} />
         <TextInput
           style={styles.input}
-          placeholder="Correo Electrónico"
+          placeholder={t('login.emailPlaceholder')}
           placeholderTextColor="#aaa"
           value={email}
           onChangeText={setEmail}
@@ -97,7 +96,7 @@ const LoginScreen: React.FC = () => {
         <View style={styles.passwordContainer}>
           <TextInput
             style={styles.inputPassword}
-            placeholder="Contraseña"
+            placeholder={t('login.passwordPlaceholder')}
             placeholderTextColor="#aaa"
             value={password}
             onChangeText={setPassword}
@@ -109,27 +108,26 @@ const LoginScreen: React.FC = () => {
         </View>
         {error && <Text style={styles.error}>{error}</Text>}
         <TouchableOpacity style={styles.forgotPasswordButton} onPress={() => navigation.navigate('ForgotPassword')}>
-          <Text style={styles.forgotPasswordText}>Olvidaste tu contraseña?</Text>
+          <Text style={styles.forgotPasswordText}>{t('login.forgotPassword')}</Text> 
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={handleLogin}>
-          <Text style={styles.buttonText}>Ingresar</Text>
+          <Text style={styles.buttonText}>{t('login.login')}</Text> 
         </TouchableOpacity>
-        <Text style={styles.forgotPasswordText}>No tienes cuenta?</Text>
+        <Text style={styles.forgotPasswordText}>{t('login.noAccount')}</Text>
       </View>
       <TouchableOpacity style={styles.buttonSecondary} onPress={() => navigation.navigate('Register')}>
-        <Text style={styles.buttonSecondaryText}>Regístrate</Text>
+        <Text style={styles.buttonSecondaryText}>{t('login.register')}</Text>
       </TouchableOpacity>
-      {/* <Text  style={styles.versionText} >Version Beta 0.1.1</Text> */}
       <Modal isVisible={isModalVisible}>
         <View style={styles.modalContent}>
           <Text style={styles.modalMessage}>{modalMessage}</Text>
           <TouchableOpacity style={styles.modalButton} onPress={toggleModal}>
-            <Text style={styles.modalButtonText}>Cerrar</Text>
+            <Text style={styles.modalButtonText}>{t('login.close')}</Text>
           </TouchableOpacity>
         </View>
       </Modal>
       
-        {loading && <Loader />}
+      {loading && <Loader />}
     </LinearGradient>
   );
 };

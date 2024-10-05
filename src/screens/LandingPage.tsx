@@ -2,40 +2,39 @@ import { View, Text, ImageBackground, StyleSheet, TouchableOpacity, Image, Dimen
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '../navigation/AppNavigator';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { useTranslation } from 'react-i18next';
+import LanguageSelector from '../components/LanguageSelector';
 
 const { width: screenWidth } = Dimensions.get('window');
 
 const LandingPage: React.FC = () => {
     const navigation = useNavigation<NavigationProp<RootStackParamList>>();
-
+    const { t, i18n } = useTranslation();
  
-
-  return (
-    <ImageBackground
-      source={require('../../assets/images/fondo.jpeg')}
-      style={styles.background}
-    >
-      <View style={styles.logoContainer}>
-        {/* <Text style={styles.logo}>Tu Logo Aquí</Text> */}
-        {/* Puedes reemplazar el Text con una imagen si tienes un logo en imagen */}
-        <Image source={require('../../assets/logo.png')} style={styles.logoImage} />
-        {/* <Image source={require('./path-to-your-logo.png')} style={styles.logoImage} /> */}
-      </View>
-
-      <View style={styles.card}>
-        <Text style={styles.cardText}>Listo para disfrutar </Text>
-        <Text style={styles.cardTextGreen}>Cobquecura </Text>
-        <View  style={styles.cardTextContainer}>
-          <Text style={styles.cardText3}>y de las mejores</Text>
-        <Text style={styles.cardTextGreen4}>promociones?</Text>
+    return (
+      <ImageBackground
+        source={require('../../assets/images/fondo.jpeg')}
+        style={styles.background}
+      >
+        <View style={styles.logoContainer}>
+          <Image source={require('../../assets/logo.png')} style={styles.logoImage} />
         </View>
-                  
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Login')}>
-         <Text style={styles.buttonText}>Disfruta los descuentos aquí  </Text>
-         <Ionicons name="storefront-outline" size={24} color="#f6f6f6" />
-        </TouchableOpacity>
-      </View>
-    </ImageBackground>
+
+        <View style={styles.card}>
+          <Text style={styles.cardText}>{t('landing.readyToEnjoy')}</Text>
+          <Text style={styles.cardTextGreen}>{t('landing.cobquecura')}</Text>
+          <View style={styles.cardTextContainer}>
+            <Text style={styles.cardText3}>{t('landing.andTheBest')}</Text>
+            <Text style={styles.cardTextGreen4}>{t('landing.promotions')}</Text>
+          </View>
+                      
+          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Login',{})}>
+            <Text style={styles.buttonText}>{t('landing.enjoyDiscountsHere')}</Text>
+            <Ionicons name="storefront-outline" size={24} color="#f6f6f6" />
+          </TouchableOpacity>
+        <LanguageSelector/>
+        </View>
+      </ImageBackground>
   );
 };
 
@@ -68,7 +67,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: screenWidth,
     position: 'absolute',
-    height:'35%',
+    height:'36%',
     bottom: 0,
 
     shadowColor: '#000',
@@ -125,6 +124,7 @@ const styles = StyleSheet.create({
   },
   button: {
     marginTop:20,
+    marginBottom:10,
     backgroundColor: '#007a8c',
     paddingVertical: 10,
     paddingHorizontal: 20,

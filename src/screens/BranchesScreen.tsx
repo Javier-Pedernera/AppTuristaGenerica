@@ -6,6 +6,7 @@ import { Branch } from '../redux/types/types';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import SemicirclesOverlay from '../components/SemicirclesOverlay';
+import { useTranslation } from 'react-i18next';
 
 const { width } = Dimensions.get('window');
 
@@ -15,6 +16,7 @@ type RootStackParamList = {
 };
 
 const BranchesScreen = () => {
+  const { t, i18n } = useTranslation();
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   const branches = useSelector(getMemoizedBranches);
   const [filteredBranches, setFilteredBranches] = useState<Branch[]>(branches);
@@ -58,7 +60,7 @@ const BranchesScreen = () => {
               style={styles.input}
               value={nameFilter}
               onChangeText={(text) => setNameFilter(text)}
-              placeholder="Buscar por nombre"
+              placeholder={t('branches.searchByName')}
             />
             <MaterialCommunityIcons name="store-search-outline" size={24} color="#acd0d5" style={styles.inputIcon} />
           </View>
@@ -67,7 +69,7 @@ const BranchesScreen = () => {
               style={styles.input}
               value={addressFilter}
               onChangeText={(text) => setAddressFilter(text)}
-              placeholder="Buscar por dirección"
+              placeholder={t('branches.searchByAddress')}
             />
             <MaterialCommunityIcons name="store-marker-outline" size={24} color="#acd0d5" style={styles.inputIcon} />
           </View>
@@ -95,7 +97,7 @@ const BranchesScreen = () => {
               </TouchableOpacity>
             ))
           ) : (
-            <Text>No se encontraron sucursales.</Text>
+            <Text>{t('branches.noBranchesFound')} </Text>
           )}
         </View>
       </View>

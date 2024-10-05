@@ -8,8 +8,8 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import AppNavigator from '@/src/navigation/AppNavigator';
+import '../src/utils/i18n';
 
-// Evita que la pantalla de carga se oculte hasta que las fuentes estén cargadas
 SplashScreen.preventAutoHideAsync();
 
 const App: React.FC = () => {

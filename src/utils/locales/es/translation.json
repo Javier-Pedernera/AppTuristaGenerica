@@ -1,0 +1,124 @@
+{
+  "navBar": {
+    "greeting": "Hola,"
+  },
+  "languageSelector": {
+    "chooseLanguage": "Elige un idioma"
+  },
+  "landing": {
+    "readyToEnjoy": "Listo para disfrutar",
+    "cobquecura": "Cobquecura",
+    "andTheBest": "y de las mejores",
+    "promotions": "promociones?",
+    "enjoyDiscountsHere": "Disfruta los descuentos aquí"
+  },
+  "login": {
+    "emailPlaceholder": "Correo Electrónico",
+    "passwordPlaceholder": "Contraseña",
+    "forgotPassword": "Olvidaste tu contraseña?",
+    "login": "Ingresar",
+    "noAccount": "No tienes cuenta?",
+    "register": "Regístrate",
+    "close": "Cerrar" 
+  },
+  "register": {
+    "firstNamePlaceholder": "* Nombre",
+    "lastNamePlaceholder": "* Apellido",
+    "emailPlaceholder": "* Correo electrónico",
+    "cityPlaceholder": "Ciudad",
+    "phonePlaceholder": "Número de teléfono",
+    "birthDate": "Fecha de Nacimiento",
+    "genderPlaceholder": "Seleccione Género",
+    "specifyGenderPlaceholder": "Especificar género",
+    "preferences": "Preferencias",
+    "selectPreferences": "Selecciona tus preferencias",
+    "close": "Cerrar",
+    "passwordPlaceholder": "* Contraseña",
+    "confirmPasswordPlaceholder": "* Confirmar Contraseña",
+    "acceptTerms": "Aceptar términos y condiciones",
+    "register": "Registrar",
+    "back": "Volver",
+    "termsAndConditions": "Términos y condiciones",
+    "male": "Masculino",
+    "female": "Femenino",
+    "other": "Otro"
+  },
+  "branches": {
+    "searchByName": "Buscar por nombre",
+    "searchByAddress": "Buscar por dirección",
+    "noBranchesFound": "No se encontraron sucursales."
+  },
+  "promotions": {
+    "searchPromotions": "Buscar promociones",
+    "keyword": "Palabra clave",
+    "start": "Inicio",
+    "end": "Fin",
+    "categories": "Categorías",
+    "filters": "Filtros de cupones",
+    "noPreferencesFound": "Promociones según tus preferencias",
+    "morePreferences": "Mostrar según mis preferencias...",
+    "otherPromotions": "Otras Promociones",
+    "viewAll": "ver todas...",
+    "applyCategories": "Aplicar categorías",
+    "close": "Cerrar",
+    "clear": "Limpiar",
+    "categoriesModal": "Categorías",
+    "confirmStartDate": "Confirmar fecha de inicio",
+    "confirmEndDate": "Confirmar fecha de fin"
+  },
+  "sidebar": {
+    "profile": "Perfil",
+    "favorites": "Favoritos",
+    "contact": "Contacto",
+    "touristPoints": "Puntos Turísticos",
+    "map": "Mapa",
+    "legal": "Legales",
+    "logout": "Cerrar sesión",
+    "version": "Versión Beta",
+    "settings": "Configuración"
+  },
+  "favoritesScreen": {
+    "showOnlyAvailable": "Mostrar solo disponibles",
+    "deleteFavorite": "Eliminar favorito",
+    "deleteConfirmation": "¿Estás seguro de que deseas eliminar esta promoción de tus favoritos?",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "addYourFavorites": "Agrega tus promociones favoritas.",
+    "from": "Desde",
+    "to": "Hasta"
+  },
+    "contactComponent": {
+      "description": "Somos la Cámara de Comercio, Turismo y Desarrollo de Cobquecura, dedicados a promover y fomentar un turismo familiar, seguro, sostenible y responsable en nuestra hermosa comuna. Nuestra misión es preservar y realzar el paisaje natural y cultural de la región, promoviendo la conservación del medio ambiente y respetando las tradiciones locales, sin perturbar el estilo de vida campesino que caracteriza Cobquecura.",
+      "boardTitle": "NUESTRA COMISIÓN DIRECTIVA",
+      "president": "Presidente: Francisco Maldonado Gaete",
+      "vicePresident": "Vice Presidente: Cristobal Bustos Torres",
+      "treasurer": "Tesorería: Julia Fernandez",
+      "secretary": "Secretaria: Melina Polo",
+      "director": "Director: Leonardo Blait",
+      "counselorDirector": "Dir. Consejero: Oscar Solar Arriagada",
+      "contactMethods": "MEDIOS DE CONTACTO",
+      "cesfam": "Cesfam: (+56 42) 2585412",
+      "emergency": "Emergencias: (+569) 447-7199, (+56 42) 234-7609",
+      "recycling": "Reciclaje: (+569) 737-85708",
+      "website": "Visítanos en nuestra página web",
+      "footer": "2024 - Todos los derechos reservados"
+    },
+    "formComponent": {
+    "namePlaceholder": "Nombre",
+    "surnamePlaceholder": "Apellido",
+    "emailPlaceholder": "Correo Electrónico",
+    "cityPlaceholder": "Ciudad",
+    "phonePlaceholder": "Número de Teléfono",
+    "birthDate": "Fecha de Nacimiento (DD-MM-YYYY)",
+    "genderSelect": "Seleccione Género",
+    "male": "Masculino",
+    "female": "Femenino",
+    "other": "Otro",
+    "viewCategories": "Ver Categorías",
+    "updateData": "Actualizar datos",
+    "close": "Cerrar",
+    "editCategories": "Editar Categorías",
+    "saveCategories": "Guardar Categorías",
+    "cancel": "Cancelar"
+  }
+}

@@ -1,0 +1,127 @@
+{
+    "navBar": {
+    "greeting": "Hej,"
+  },
+    "languageSelector": {
+    "chooseLanguage": "Välj ett språk"
+  },
+    "landing": {
+      "readyToEnjoy": "Redo att njuta",
+      "cobquecura": "Cobquecura",
+      "andTheBest": "och de bästa",
+      "promotions": "kampanjer?",
+      "enjoyDiscountsHere": "Njut av rabatterna här"
+    },
+    "login": {
+      "emailPlaceholder": "E-post",
+      "passwordPlaceholder": "Lösenord",
+      "forgotPassword": "Glömde du ditt lösenord?",
+      "login": "Logga in",
+      "noAccount": "Har du inget konto?",
+      "register": "Registrera",
+      "close": "Stäng"
+    },
+    "register": {
+      "firstNamePlaceholder": "* Förnamn",
+      "lastNamePlaceholder": "* Efternamn",
+      "emailPlaceholder": "* E-post",
+      "cityPlaceholder": "Stad",
+      "phonePlaceholder": "Telefonnummer",
+      "birthDate": "Födelsedatum",
+      "genderPlaceholder": "Välj kön",
+      "specifyGenderPlaceholder": "Specificera kön",
+      "preferences": "Preferenser",
+      "selectPreferences": "Välj dina preferenser",
+      "close": "Stäng",
+      "passwordPlaceholder": "* Lösenord",
+      "confirmPasswordPlaceholder": "* Bekräfta lösenord",
+      "acceptTerms": "Acceptera villkor",
+      "register": "Registrera",
+      "back": "Tillbaka",
+      "termsAndConditions": "Villkor",
+      "male": "Man",
+      "female": "Kvinna",
+      "other": "Annat"
+    },
+    "branches": {
+    "searchByName": "Sök efter namn",
+    "searchByAddress": "Sök efter adress",
+    "noBranchesFound": "Inga filialer hittades."
+  },
+  "promotions": {
+    "searchPromotions": "Sök kampanjer",
+    "keyword": "Nyckelord",
+    "start": "Start",
+    "end": "Slut",
+    "categories": "Kategorier",
+    "filters": "Kupongfilter",
+    "noPreferencesFound": "Kampanjer enligt dina preferenser",
+    "morePreferences": "Visa enligt mina preferenser...",
+    "otherPromotions": "Andra kampanjer",
+    "viewAll": "visa alla...",
+    "applyCategories": "Tillämpa kategorier",
+    "close": "Stäng",
+    "clear": "Rensa",
+    "startDate": "Start",
+    "endDate": "Slut",
+    "categoriesModal": "Kategorier",
+    "confirmStartDate": "Bekräfta startdatum",
+    "confirmEndDate": "Bekräfta slutdatum"
+  },
+  "sidebar": {
+    "profile": "Profil",
+    "favorites": "Favoriter",
+    "contact": "Kontakt",
+    "touristPoints": "Turistpunkter",
+    "map": "Karta",
+    "legal": "Juridisk",
+    "logout": "Logga ut",
+    "version": "Beta Version",
+    "settings": "Inställningar"
+  },
+  "favoritesScreen": {
+    "showOnlyAvailable": "Visa endast tillgängliga",
+    "deleteFavorite": "Ta bort favorit",
+    "deleteConfirmation": "Är du säker på att du vill ta bort denna kampanj från dina favoriter?",
+    "cancel": "Avbryt",
+    "delete": "Ta bort",
+    "addYourFavorites": "Lägg till dina favoritkampanjer.",
+    "from": "Från",
+    "to": "Till"
+  },
+  "contactComponent": {
+    "description": "Vi är handelskammaren, turism och utveckling i Cobquecura, som är dedikerade till att främja och främja familjevänlig, säker, hållbar och ansvarsfull turism i vår vackra kommun. Vårt uppdrag är att bevara och förbättra det naturliga och kulturella landskapet i regionen, främja miljöskydd och respektera lokala traditioner, utan att störa den lantliga livsstilen som kännetecknar Cobquecura.",
+    "boardTitle": "VÅRT STYRELSE",
+    "president": "Ordförande: Francisco Maldonado Gaete",
+    "vicePresident": "Vice ordförande: Cristobal Bustos Torres",
+    "treasurer": "Kassör: Julia Fernandez",
+    "secretary": "Sekreterare: Melina Polo",
+    "director": "Direktör: Leonardo Blait",
+    "counselorDirector": "Rådgivande direktör: Oscar Solar Arriagada",
+    "contactMethods": "KONTAKTMETODER",
+    "cesfam": "Cesfam: (+56 42) 2585412",
+    "emergency": "Nödsituationer: (+569) 447-7199, (+56 42) 234-7609",
+    "recycling": "Återvinning: (+569) 737-85708",
+    "website": "Besök oss på vår webbplats",
+    "footer": "2024 - Alla rättigheter förbehålls"
+  },
+  "formComponent": {
+    "namePlaceholder": "Förnamn",
+    "surnamePlaceholder": "Efternamn",
+    "emailPlaceholder": "E-post",
+    "cityPlaceholder": "Stad",
+    "phonePlaceholder": "Telefonnummer",
+    "birthDate": "Födelsedatum (DD-MM-YYYY)",
+    "genderSelect": "Välj kön",
+    "male": "Man",
+    "female": "Kvinna",
+    "other": "Annat",
+    "viewCategories": "Visa kategorier",
+    "updateData": "Uppdatera data",
+    "close": "Stäng",
+    "editCategories": "Redigera kategorier",
+    "saveCategories": "Spara kategorier",
+    "cancel": "Avbryt"
+  }
+  }
+  

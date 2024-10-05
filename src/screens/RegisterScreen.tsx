@@ -22,12 +22,14 @@ import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { Dimensions } from 'react-native';
 import RenderHtml from 'react-native-render-html';
 import TermsModal from '../components/TermsModal';
+import { useTranslation } from 'react-i18next';
 
 const { width: screenWidth } = Dimensions.get('window');
 const screenHeight = Dimensions.get('window').height;
 type RegisterScreenProp = StackNavigationProp<RootStackParamList, 'Register'>;
 
 const RegisterScreen: React.FC = () => {
+  const { t } = useTranslation();
   const dispatch: AppDispatch = useDispatch();
   const navigation = useNavigation<RegisterScreenProp>();
   const categories = useSelector(getMemoizedAllCategories);
@@ -229,184 +231,190 @@ const RegisterScreen: React.FC = () => {
   return (
     <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined} style={styles.maincontainer}>
       <LinearGradient
-      colors={['#007a8c', '#f6f6f6']}
-      style={styles.container}
-    >{loading && <Loader />}
-      <ScrollView contentContainerStyle={styles.containerScroll}>
-        {/* <Image source={require('../../assets/logo.png')} style={styles.logo} /> */}
-        <View style={styles.formGrid}>
-        <Text style={styles.titleRegister}>Registro de turista</Text>
-          <TextInput
-            style={styles.input}
-            placeholder="* Nombre"
-            placeholderTextColor="#aaa"
-            value={formData.first_name}
-            onChangeText={(value) => handleInputChange('first_name', value)}
-          />
-          <TextInput
-            style={styles.input}
-            placeholder="* Apellido"
-            placeholderTextColor="#aaa"
-            value={formData.last_name}
-            onChangeText={(value) => handleInputChange('last_name', value)}
-          />
-          <TextInput
-            style={styles.input}
-            placeholder="* Correo electrónico"
-            placeholderTextColor="#aaa"
-            value={formData.email}
-            onChangeText={(value) => handleInputChange('email', value)}
-            keyboardType="email-address"
-          />
-          <CountryPicker
-            selectedCountry={formData.country}
-            onCountryChange={handleCountryChange}
-            estilo={true}
-          />
-          <TextInput
-            style={styles.input}
-            placeholder="Ciudad"
-            placeholderTextColor="#aaa"
-            value={formData.city}
-            onChangeText={(value) => handleInputChange('city', value)}
-          />
-          <TextInput
-            style={styles.input}
-            placeholder="Número de teléfono"
-            placeholderTextColor="#aaa"
-            value={formData.phone_number}
-            onChangeText={(value) => handleInputChange('phone_number', value)}
-            keyboardType="phone-pad"
-          />
-          <View style={styles.datePickerContainer}>
-            {!showDatePicker && (<TouchableOpacity onPress={() => setShowDatePicker(true)} style={styles.inputdate}>
-              <Text style={styles.textDate}>
-                {formData.birth_date ? formatDateToDDMMYYYY(formData.birth_date) : 'Fecha de Nacimiento'}
-              </Text>
-            </TouchableOpacity>)}
-            {showDatePicker && (
-              <View>
-                <DateTimePicker
-                  value={selectedDate || new Date()}
-                  mode="date"
-                  display="spinner"
-                  onChange={handleDateChange}
-                />
-                {Platform.OS === 'ios' && (
-                  <TouchableOpacity onPress={confirmDate} style={styles.confirmButton}>
-                    <Text style={styles.confirmButtonText}>Confirmar fecha</Text>
-                  </TouchableOpacity>
-                )}
-              </View>
-            )}
-          </View>
-          <View style={styles.genderDivider}>
-            <View style={styles.pickerWrapper}>
-              <RNPickerSelect
-                onValueChange={(value) => handleGenderChange(value)}
-                items={[
-                  { label: 'Masculino', value: 'male' },
-                  { label: 'Femenino', value: 'female' },
-                  { label: 'Otro', value: 'other' },
-                ]}
-                placeholder={{ label: 'Seleccione Género', value: '' }}
-                style={pickerSelectStyles}
-              />
-            </View>
-            {showOtherGender && (
-              <TextInput
-                style={styles.input}
-                placeholder="Especificar género"
-                placeholderTextColor="#aaa"
-                value={formData.other_gender}
-                onChangeText={(value) => handleInputChange('other_gender', value)}
-              />
-            )}
-          </View>
-          
-          <TouchableOpacity style={styles.buttonModal} onPress={toggleModal}>
-          <MaterialIcons name="format-list-bulleted-add" size={22} color="#fff" />
-            {/* <Ionicons name="add" size={24} color="#fff" style={styles.buttonModalIcon} /> */}
-            <Text style={styles.buttonModalText}>Preferencias</Text>
-          </TouchableOpacity>
-          <Modal isVisible={isModalVisible} onBackdropPress={toggleModal}>
-            <View style={styles.modalContent}>
-              <Text style={styles.modalTitle}>Selecciona tus preferencias</Text>
-              {categories.map(category => (
-                <View key={category.category_id} style={styles.checkboxWrapper}>
-                  <Checkbox
-                    style={styles.checkbox}
-                    value={selectedCategories.includes(category.category_id)}
-                    onValueChange={() => handleCategoryChange(category.category_id)}
+        colors={['#007a8c', '#f6f6f6']}
+        style={styles.container}
+      >
+        {loading && <Loader />}
+        <ScrollView contentContainerStyle={styles.containerScroll}>
+          <View style={styles.formGrid}>
+            <Text style={styles.titleRegister}>{t('register.title')}</Text>
+            
+            <TextInput
+              style={styles.input}
+              placeholder={t('register.firstNamePlaceholder')}
+              placeholderTextColor="#aaa"
+              value={formData.first_name}
+              onChangeText={(value) => handleInputChange('first_name', value)}
+            />
+            
+            <TextInput
+              style={styles.input}
+              placeholder={t('register.lastNamePlaceholder')}
+              placeholderTextColor="#aaa"
+              value={formData.last_name}
+              onChangeText={(value) => handleInputChange('last_name', value)}
+            />
+            
+            <TextInput
+              style={styles.input}
+              placeholder={t('register.emailPlaceholder')}
+              placeholderTextColor="#aaa"
+              value={formData.email}
+              onChangeText={(value) => handleInputChange('email', value)}
+              keyboardType="email-address"
+            />
+            
+            <TextInput
+              style={styles.input}
+              placeholder={t('register.cityPlaceholder')}
+              placeholderTextColor="#aaa"
+              value={formData.city}
+              onChangeText={(value) => handleInputChange('city', value)}
+            />
+            
+            <TextInput
+              style={styles.input}
+              placeholder={t('register.phonePlaceholder')}
+              placeholderTextColor="#aaa"
+              value={formData.phone_number}
+              onChangeText={(value) => handleInputChange('phone_number', value)}
+              keyboardType="phone-pad"
+            />
+            
+            <View style={styles.datePickerContainer}>
+              {!showDatePicker && (
+                <TouchableOpacity onPress={() => setShowDatePicker(true)} style={styles.inputdate}>
+                  <Text style={styles.textDate}>
+                    {formData.birth_date ? formatDateToDDMMYYYY(formData.birth_date) : t('register.birthDate')}
+                  </Text>
+                </TouchableOpacity>
+              )}
+              {showDatePicker && (
+                <View>
+                  <DateTimePicker
+                    value={selectedDate || new Date()}
+                    mode="date"
+                    display="spinner"
+                    onChange={handleDateChange}
                   />
-                  <Text style={styles.checkboxLabel}>{category.name}</Text>
+                  {Platform.OS === 'ios' && (
+                    <TouchableOpacity onPress={confirmDate} style={styles.confirmButton}>
+                      <Text style={styles.confirmButtonText}>{t('register.confirmDate')}</Text>
+                    </TouchableOpacity>
+                  )}
                 </View>
-              ))}
-              <TouchableOpacity style={styles.modalButton} onPress={toggleModal}>
-                <Text style={styles.modalButtonText}>Cerrar</Text>
+              )}
+            </View>
+
+            <View style={styles.genderDivider}>
+              <View style={styles.pickerWrapper}>
+                <RNPickerSelect
+                  onValueChange={(value) => handleGenderChange(value)}
+                  items={[
+                    { label: t('register.male'), value: 'male' },
+                    { label: t('register.female'), value: 'female' },
+                    { label: t('register.other'), value: 'other' }
+                  ]}
+                  placeholder={{ label: t('register.genderPlaceholder'), value: '' }}
+                  style={pickerSelectStyles}
+                />
+              </View>
+              {showOtherGender && (
+                <TextInput
+                  style={styles.input}
+                  placeholder={t('register.specifyGenderPlaceholder')}
+                  placeholderTextColor="#aaa"
+                  value={formData.other_gender}
+                  onChangeText={(value) => handleInputChange('other_gender', value)}
+                />
+              )}
+            </View>
+
+            <TouchableOpacity style={styles.buttonModal} onPress={toggleModal}>
+              <MaterialIcons name="format-list-bulleted-add" size={22} color="#fff" />
+              <Text style={styles.buttonModalText}>{t('register.preferences')}</Text>
+            </TouchableOpacity>
+            <Modal isVisible={isModalVisible} onBackdropPress={toggleModal}>
+              <View style={styles.modalContent}>
+                <Text style={styles.modalTitle}>{t('register.selectPreferences')}</Text>
+                {categories.map(category => (
+                  <View key={category.category_id} style={styles.checkboxWrapper}>
+                    <Checkbox
+                      style={styles.checkbox}
+                      value={selectedCategories.includes(category.category_id)}
+                      onValueChange={() => handleCategoryChange(category.category_id)}
+                    />
+                    <Text style={styles.checkboxLabel}>{category.name}</Text>
+                  </View>
+                ))}
+                <TouchableOpacity style={styles.modalButton} onPress={toggleModal}>
+                  <Text style={styles.modalButtonText}>{t('register.close')}</Text>
+                </TouchableOpacity>
+              </View>
+            </Modal>
+
+            <View style={styles.passwordContainer}>
+              <TextInput
+                style={styles.inputPassword}
+                placeholder={t('register.passwordPlaceholder')}
+                placeholderTextColor="#aaa"
+                value={formData.password}
+                onChangeText={(value) => handleInputChange('password', value)}
+                secureTextEntry={!showPassword}
+              />
+              <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
+                <Ionicons name={showPassword ? 'eye-off' : 'eye'} size={20} color="#aaa" />
               </TouchableOpacity>
             </View>
-          </Modal>
-
-          <View style={styles.passwordContainer}>
-            <TextInput
-              style={styles.inputPassword}
-              placeholder="* Contraseña"
-              placeholderTextColor="#aaa"
-              value={formData.password}
-              onChangeText={(value) => handleInputChange('password', value)}
-              secureTextEntry={!showPassword}
-            />
-            <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
-              <Ionicons name={showPassword ? 'eye-off' : 'eye'} size={20} color="#aaa" />
-            </TouchableOpacity>
-          </View>
-          <View style={styles.passwordContainer}>
-            <TextInput
-              style={styles.inputPassword}
-              placeholder="* Confirmar Contraseña"
-              placeholderTextColor="#aaa"
-              value={formData.confirmPassword}
-              onChangeText={(value) => handleInputChange('confirmPassword', value)}
-              secureTextEntry={!showConfirmPassword}
-            />
-            <TouchableOpacity onPress={() => setShowConfirmPassword(!showConfirmPassword)}>
-              <Ionicons name={showConfirmPassword ? 'eye-off' : 'eye'} size={20} color="#aaa" />
-            </TouchableOpacity>
-          </View>
-        </View>
-        <TouchableOpacity onPress={toggleTermsModal} style={styles.termsButton}>
-              <Checkbox
-                style={styles.checkbox}
-                value={isTermsAccepted}
-                onValueChange={() => setIsTermsAccepted(!isTermsAccepted)}
+            
+            <View style={styles.passwordContainer}>
+              <TextInput
+                style={styles.inputPassword}
+                placeholder={t('register.confirmPasswordPlaceholder')}
+                placeholderTextColor="#aaa"
+                value={formData.confirmPassword}
+                onChangeText={(value) => handleInputChange('confirmPassword', value)}
+                secureTextEntry={!showConfirmPassword}
               />
-              <Text style={styles.termsText}>Aceptar términos y condiciones</Text>
-            </TouchableOpacity>
+              <TouchableOpacity onPress={() => setShowConfirmPassword(!showConfirmPassword)}>
+                <Ionicons name={showConfirmPassword ? 'eye-off' : 'eye'} size={20} color="#aaa" />
+              </TouchableOpacity>
+            </View>
+          </View>
 
-            <TermsModal 
-                isVisible={isTermsModalVisible}
-                toggleModal={toggleTermsModal} 
-                acceptTerms={acceptTerms} 
-                termsText={termsText}
-                onCancel={undefined}
-                newTerms={false}
-              />
-        {error && <Text style={styles.error}>{error}</Text>}
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity
-            style={[styles.button, !isFormValid() && { backgroundColor: '#acd0d5' }]}
-            onPress={handleRegister}
-            disabled={!isFormValid()}
-          >
-            <Text style={styles.buttonText}>Registrar</Text>
+          <TouchableOpacity onPress={toggleTermsModal} style={styles.termsButton}>
+            <Checkbox
+              style={styles.checkbox}
+              value={isTermsAccepted}
+              onValueChange={() => setIsTermsAccepted(!isTermsAccepted)}
+            />
+            <Text style={styles.termsText}>{t('register.acceptTerms')}</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.buttonSecondary} onPress={() => navigation.navigate('Login', {})}>
-            <Text style={styles.buttonSecondaryText}>Volver</Text>
-          </TouchableOpacity>
-        </View>
-      </ScrollView>
+          <TermsModal 
+            isVisible={isTermsModalVisible}
+            toggleModal={toggleTermsModal} 
+            acceptTerms={acceptTerms} 
+            termsText={termsText}
+            onCancel={undefined}
+            newTerms={false}
+          />
+          
+          {error && <Text style={styles.error}>{error}</Text>}
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity
+              style={[styles.button, !isFormValid() && { backgroundColor: '#acd0d5' }]}
+              onPress={handleRegister}
+              disabled={!isFormValid()}
+            >
+              <Text style={styles.buttonText}>{t('register.register')}</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.buttonSecondary} onPress={() => navigation.navigate('Login', {})}>
+              <Text style={styles.buttonSecondaryText}>{t('register.back')}</Text>
+            </TouchableOpacity>
+          </View>
+        </ScrollView>
       </LinearGradient>
     </KeyboardAvoidingView>
   );

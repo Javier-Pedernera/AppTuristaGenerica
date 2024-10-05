@@ -8,10 +8,12 @@ import { getMemoizedUserData } from '../redux/selectors/userSelectors';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '../navigation/AppNavigator';
 import { RFPercentage } from 'react-native-responsive-fontsize';
+import { useTranslation } from 'react-i18next';
 
 const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
 
 const CustomHeader: React.FC = () => {
+  const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   const user = useSelector(getMemoizedUserData);
@@ -25,7 +27,7 @@ const CustomHeader: React.FC = () => {
   };
   return (
     <View style={styles.headerContainer}>
-      <Text style={styles.userName}>Hola, {user.first_name}</Text>
+      <Text style={styles.userName}>{t('navBar.greeting',)} {user.first_name}</Text>
       <TouchableOpacity style={styles.imageCont} onPress={goToProfile}>
         <View style={styles.avatarContainer}>
           {user?.image_url ? (

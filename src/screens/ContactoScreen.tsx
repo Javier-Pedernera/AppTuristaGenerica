@@ -1,42 +1,44 @@
+import { useTranslation } from 'react-i18next';
 import { View, Text, Linking, StyleSheet, ScrollView, Image } from 'react-native';
 
 const ContactComponent = () => {
+  const { t } = useTranslation();
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Image 
-        source={ require('../../assets/logo.png')} 
+        source={require('../../assets/logo.png')} 
         style={styles.logo} 
       />
       <Image 
-        source={ require('../../assets/logo2.png')} 
+        source={require('../../assets/logo2.png')} 
         style={styles.logo2} 
       />
       
       <Text style={styles.text}>
-        Somos la Cámara de Comercio, Turismo y Desarrollo de Cobquecura, dedicados a promover y fomentar un turismo familiar, seguro, sostenible y responsable en nuestra hermosa comuna. 
-        Nuestra misión es preservar y realzar el paisaje natural y cultural de la región, promoviendo la conservación del medio ambiente y respetando las tradiciones locales, sin perturbar el estilo de vida campesino que caracteriza Cobquecura.
+        {t('contactComponent.description')}
       </Text>
       
-      <Text style={styles.subHeader}>NUESTRA COMISIÓN DIRECTIVA</Text>
+      <Text style={styles.subHeader}>{t('contactComponent.boardTitle')}</Text>
       <Text style={styles.text}>
-        Presidente: Francisco Maldonado Gaete {'\n'}
-        Vice Presidente: Cristobal Bustos Torres {'\n'}
-        Tesorería: Julia Fernandez {'\n'}
-        Secretaria: Melina Polo {'\n'}
-        Director: Leonardo Blait {'\n'}
-        Dir. Consejero: Oscar Solar Arriagada
+        {t('contactComponent.president')} {'\n'}
+        {t('contactComponent.vicePresident')} {'\n'}
+        {t('contactComponent.treasurer')} {'\n'}
+        {t('contactComponent.secretary')} {'\n'}
+        {t('contactComponent.director')} {'\n'}
+        {t('contactComponent.counselorDirector')}
       </Text>
       
-      <Text style={styles.subHeader}>MEDIOS DE CONTACTO</Text>
-      <Text style={styles.text}>Cesfam: (+56 42) 2585412</Text>
-      <Text style={styles.text}>Emergencias: (+569) 447-7199, (+56 42) 234-7609</Text>
-      <Text style={styles.text}>Reciclaje: (+569) 737-85708</Text>
+      <Text style={styles.subHeader}>{t('contactComponent.contactMethods')}</Text>
+      <Text style={styles.text}>{t('contactComponent.cesfam')}</Text>
+      <Text style={styles.text}>{t('contactComponent.emergency')}</Text>
+      <Text style={styles.text}>{t('contactComponent.recycling')}</Text>
       
       <Text style={styles.link} onPress={() => Linking.openURL('https://www.camaradeturismocobquecura.cl/')}>
-        Visítanos en nuestra página web
+        {t('contactComponent.website')}
       </Text>
       
-      <Text style={styles.footer}>2024 - Todos los derechos reservados</Text>
+      <Text style={styles.footer}>{t('contactComponent.footer')}</Text>
     </ScrollView>
   );
 };

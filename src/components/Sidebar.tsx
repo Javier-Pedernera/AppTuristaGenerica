@@ -10,10 +10,11 @@ import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import { FontAwesome } from '@expo/vector-icons';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { useTranslation } from 'react-i18next';
 
 const { width, height } = Dimensions.get('window');
 const Sidebar: React.FC<DrawerContentComponentProps> = (props) => {
-
+  const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
 
   const handleLogout = () => {
@@ -30,37 +31,41 @@ const Sidebar: React.FC<DrawerContentComponentProps> = (props) => {
       <SemicirclesOverlaySideBar/>
       <TouchableOpacity style={styles.option} onPress={() => navigateToScreen('Perfil')}>
         <MaterialCommunityIcons style={styles.icon} name="account-box" size={width * 0.06} color="#000" />
-        <Text style={styles.optionText}>Perfil</Text>
+        <Text style={styles.optionText}>{t('sidebar.profile')}</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.option} onPress={() => navigateToScreen('Favoritos')}>
         <MaterialCommunityIcons style={styles.icon} name="folder-heart-outline" size={width * 0.06} color="#000" />
-        <Text style={styles.optionText}>Favoritos</Text>
+        <Text style={styles.optionText}>{t('sidebar.favorites')}</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.option} onPress={() => navigateToScreen('Contacto')}>
         <MaterialCommunityIcons style={styles.icon} name="card-account-phone-outline" size={width * 0.06} color="#000" />
-        <Text style={styles.optionText}>Contacto</Text>
+        <Text style={styles.optionText}>{t('sidebar.contact')}</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.option} onPress={() => navigateToScreen('PuntosTuristicos')}>
       <FontAwesome6 style={styles.icon} name="umbrella-beach"size={width * 0.06} color="#000" />
-        <Text style={styles.optionText}>Puntos Turísticos</Text>
+        <Text style={styles.optionText}>{t('sidebar.touristPoints')}</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.option} onPress={() => navigateToScreen('PuntosTuristicos')}>
+      <TouchableOpacity style={styles.option} onPress={() => navigateToScreen('Mapa')}>
         <FontAwesome style={styles.icon} name="map-o" size={width * 0.06} color="#000" />
-        <Text style={styles.optionText}>Map</Text>
+        <Text style={styles.optionText}>{t('sidebar.map')}</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.option} onPress={() => navigateToScreen('Configuracion')}>
+      <Ionicons style={styles.icon} name="settings-outline" size={width * 0.06} color="#000" />
+        <Text style={styles.optionText}>{t('sidebar.settings')}</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.option} onPress={() => navigateToScreen('Legales')}>
         <Ionicons name="information-circle-outline" style={styles.icon} size={width * 0.06} color="#000" />
-        <Text style={styles.optionText}>Legales</Text>
+        <Text style={styles.optionText}>{t('sidebar.legal')}</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={handleLogout} style={styles.logoutButton}>
         <SimpleLineIcons style={styles.icon} name="logout" size={width * 0.05} color="#fff" />
-        <Text style={styles.optionText}>Cerrar sesión</Text>
+        <Text style={styles.optionText}>{t('sidebar.logout')}</Text>
       </TouchableOpacity>
       <View style={styles.logoLogSideCont}>
         <Image source={require('../../assets/logo.png')} style={styles.logoLogSide}/>
         <Image source={require('../../assets/logo2.png')} style={styles.logoLog2Side}/>
       </View>
-        <Text  style={styles.versionText} >Version Beta 0.1.7</Text>
+        <Text  style={styles.versionText} >{t('sidebar.version')} 0.1.7</Text>
     </View>
   );
 };
